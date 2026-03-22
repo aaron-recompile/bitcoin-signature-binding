@@ -1,0 +1,16 @@
+{
+  "_comment": "Fill after running Signet scripts; commit if you want public txids in-repo.",
+  "replay_csfs": {
+    "fund_txids": ["txid1", "txid2"],
+    "reveal_txids": ["txid_spend1", "txid_spend2"]
+  },
+  "replay_ik_csfs": {
+    "fund_txids": ["txid1", "txid2"],
+    "reveal_txids": ["txid_spend1", "txid_spend2"]
+  },
+  "sighash_checksig": {
+    "fund_txid": "txid_fund",
+    "valid_spend_txid": "txid_reveal",
+    "mutated_tx_rejected_by_mempool": true
+  }
+}

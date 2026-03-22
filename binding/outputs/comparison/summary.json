@@ -1,0 +1,29 @@
+{
+  "main_observation": "Replay behavior follows binding target: message-bound and identity-bound signatures can replay where script allows; sighash-bound signatures do not survive tx mutation.",
+  "cases": {
+    "CSFS": {
+      "binding_target": "message",
+      "replayable": true,
+      "checks": {
+        "reuse_passes_for_csfs": true,
+        "mutations_fail": true
+      }
+    },
+    "IK+CSFS": {
+      "binding_target": "identity",
+      "replayable_across_same_internal_key": true,
+      "checks": {
+        "identity_binding_holds": true,
+        "replay_same_key": true
+      }
+    },
+    "CHECKSIG": {
+      "binding_target": "transaction",
+      "replayable": false,
+      "checks": {
+        "sighash_changed": true,
+        "reuse_fails_for_checksig": true
+      }
+    }
+  }
+}

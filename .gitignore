@@ -1,0 +1,8 @@
+.venv/
+venv/
+__pycache__/
+*.pyc
+.env
+binding/signet/state_*.json
+binding/signet/.replay_*_last_fund_txid
+binding/signet/.sighash_checksig_fund_txid

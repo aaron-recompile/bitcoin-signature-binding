@@ -1,0 +1,36 @@
+{
+  "_meta": {
+    "network": "Bitcoin Inquisition Signet",
+    "purpose": "On-chain anchor txids for Signet demos (recorded 2026-03-21)"
+  },
+  "replay_csfs": {
+    "message_label": "binding-exp-msg:csfs",
+    "fund_txids": [
+      "634a3a0c55c70258298e5a5880991190c651f14843b9b8b5ca106a554cbd5a9e",
+      "13b2d60335c399ef3209e14283241c1913385a08280cc048517c3e577f664879"
+    ],
+    "reveal_txids": [
+      "40b38a204e17a8198aa349cf52cafcaa3c11e16bb7aeabf7a034e48f432f3ea4",
+      "7f57ac73b0e6fb394e735ced500af78abfddb57737df3f4a002b3e8ed7ffeeb9"
+    ]
+  },
+  "replay_ik_csfs": {
+    "message_label": "binding-exp-msg:ik_csfs",
+    "fund_txids": [
+      "9f37cab42100bdf738d06f45814a7d3a77ef919b958195b7192d460e63dafdff",
+      "dcf8a98522b8ffa46194abf45fc8c227696cba58b4741f27dd6f2ddf4d461206"
+    ],
+    "reveal_txids": [
+      "34222f1fa6b28b190e59baaf64b57e25755b174ffe50422f06893e5ce196624b",
+      "2a4eb8619af7fbcfdd39ef62c128ba8b60382a0929040210bbbeaec31aa62f5f"
+    ]
+  },
+  "sighash_checksig": {
+    "p2tr_address": "tb1ppyks5dy00fcjjcfxh7a8ndm2qhvwz5l82wmzykc7nyffgg6sapnq7w6xfr",
+    "fund_txid": "96b1a474c6909b1c4e4ef7883b51e3440753035902117ce0816870bea36e1494",
+    "valid_spend_txid_tx_a": "5225349237a3e6240b84d2c68095b0d232cbdf05367fe02d5dee191ea777a18f",
+    "mutated_tx_b_txid_test_only": "cc9ebd50dd81f20834b687e94aa745c16c1cdeab14d739450793499d484457b6",
+    "mutated_tx_mempool_allowed": false,
+    "mutated_tx_reject_reason": "Invalid Schnorr signature (sighash mismatch after output change)"
+  }
+}

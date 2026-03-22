@@ -1,0 +1,32 @@
+{
+  "case": "IK+CSFS",
+  "binding_target": "identity",
+  "key_source": "UTXO_internal_key_context",
+  "signed_object": "arbitrary_32-byte_message_signed_by_internal_key",
+  "script_hex": "cbcc",
+  "replayable_across_same_internal_key": true,
+  "verification": "success",
+  "short_interpretation": "Authorization is tied to internal key P; same (sig,msg) replays if another UTXO shares P.",
+  "subexperiments": {
+    "B1_baseline": {
+      "verify_sig_k_with_P_k": true
+    },
+    "B2_wrong_signer": {
+      "verify_sig_k2_with_P_k": false,
+      "expected_false": true
+    },
+    "B3_replay_same_key_utxos": {
+      "verify_slot_1": true,
+      "verify_slot_2": true,
+      "both_true": true
+    },
+    "B4_different_internal_key": {
+      "verify_sig_k_with_P_k2": false,
+      "expected_false": true
+    }
+  },
+  "checks": {
+    "identity_binding_holds": true,
+    "replay_same_key": true
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "case": "CSFS",
+  "binding_target": "message",
+  "key_source": "witness",
+  "signed_object": "arbitrary_32-byte_message",
+  "script_hex": "cc",
+  "replayable": true,
+  "verification": "success",
+  "short_interpretation": "Same signature verifies the same message for any compatible tapscript; tx id differs.",
+  "subexperiments": {
+    "A1_baseline": {
+      "txid_synthetic": "7777777777777777777777777777777777777777777777777777777777777777",
+      "schnorr_verify_message": true
+    },
+    "A2_reuse_same_sig_msg_pubkey": {
+      "txid_synthetic_B": "8888888888888888888888888888888888888888888888888888888888888888",
+      "schnorr_verify_message": true,
+      "same_stack_reused": true
+    },
+    "A3_mutation_failures": {
+      "message_tampered_verify": false,
+      "wrong_pubkey_verify": false,
+      "wrong_pubkey_note": "valid x-only from another key; sig was for signer key",
+      "expected_both_false": true
+    }
+  },
+  "artifacts": {
+    "tx_a_hex": "0200000000010177777777777777777777777777777777777777777777777777777777777777770000000000fdffffff015cc10000000000002251201ac151f73b246a0737011914ef206264247e082f0df115bed5193c508cacbc840540f9231d097c5133eb2a61457e50f0d7b53fc5a12c521e7f3a7bbe6c7fdbaafd13b951b92d624a1163b735b6d1a0ea8cb6af4a8034db70890a54dc49dbc1f7375a20e936eb1c304f3c490a9698ca7bf17d5d9193e96d9fb6fb187d2c73b5d20960b6202c0b7cf95324a07d05398b240174dc0c2be444d96b159aa6c7f7b1e66868099101cc21c19ac20335eb38768d2052be1dbbc3c8f6178407458e51e6b4ad22f1d91758895b00000000",
+    "tx_b_hex": "0200000000010188888888888888888888888888888888888888888888888888888888888888880000000000fdffffff0154ec0000000000002251201ac151f73b246a0737011914ef206264247e082f0df115bed5193c508cacbc840540f9231d097c5133eb2a61457e50f0d7b53fc5a12c521e7f3a7bbe6c7fdbaafd13b951b92d624a1163b735b6d1a0ea8cb6af4a8034db70890a54dc49dbc1f7375a20e936eb1c304f3c490a9698ca7bf17d5d9193e96d9fb6fb187d2c73b5d20960b6202c0b7cf95324a07d05398b240174dc0c2be444d96b159aa6c7f7b1e66868099101cc21c19ac20335eb38768d2052be1dbbc3c8f6178407458e51e6b4ad22f1d91758895b00000000",
+    "witness_template": [
+      "f9231d097c5133eb2a61457e50f0d7b53fc5a12c521e7f3a7bbe6c7fdbaafd13b951b92d624a1163b735b6d1a0ea8cb6af4a8034db70890a54dc49dbc1f7375a",
+      "e936eb1c304f3c490a9698ca7bf17d5d9193e96d9fb6fb187d2c73b5d20960b6",
+      "2c0b7cf95324a07d05398b240174dc0c2be444d96b159aa6c7f7b1e668680991"
+    ]
+  },
+  "checks": {
+    "reuse_passes_for_csfs": true,
+    "mutations_fail": true
+  }
+}

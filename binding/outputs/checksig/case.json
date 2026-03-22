@@ -1,0 +1,40 @@
+{
+  "case": "CHECKSIG",
+  "binding_target": "transaction",
+  "key_source": "script_path_pubkey",
+  "signed_object": "taproot_script_path_sighash",
+  "replayable": false,
+  "verification": "success",
+  "short_interpretation": "Signature is over sighash(tx); change outputs => different sighash => old sig fails.",
+  "subexperiments": {
+    "C1_baseline": {
+      "sighash_hex": "09873886b3e56a8406a8e57476de5a43ce3973bf50a181509d1148b8922d3827",
+      "schnorr_verify": true
+    },
+    "C2_reuse_other_context": {
+      "sighash_b_hex": "486ef9f52f0d7af1aa8ce297bf512bcd59b1a3fc256d693d56321b5ebb604793",
+      "old_signature_still_valid": false,
+      "expected_false": true
+    }
+  },
+  "checks": {
+    "sighash_changed": true,
+    "reuse_fails_for_checksig": true
+  },
+  "raw": {
+    "transaction_A": {
+      "sighash": "09873886b3e56a8406a8e57476de5a43ce3973bf50a181509d1148b8922d3827",
+      "signature": "145354d9d36c58b34b11bd7b17dd10133161eef51acf15117b604f15f4be1380b3bc1b1ccf748819ad434643c643d2748e776ecbcb90956a66c431a5aeb06bae",
+      "verification": true
+    },
+    "transaction_B_reuse_attempt": {
+      "sighash": "486ef9f52f0d7af1aa8ce297bf512bcd59b1a3fc256d693d56321b5ebb604793",
+      "reused_signature": "145354d9d36c58b34b11bd7b17dd10133161eef51acf15117b604f15f4be1380b3bc1b1ccf748819ad434643c643d2748e776ecbcb90956a66c431a5aeb06bae",
+      "verification": false
+    },
+    "checks": {
+      "sighash_changed": true,
+      "reuse_fails_for_checksig": true
+    }
+  }
+}
