@@ -4,7 +4,9 @@
 
 The repository is **self-contained**: runnable harnesses, checked-in **`binding/outputs/`** JSON (regenerate with `python -m binding.experiment` and compare), and documentation under `docs/`.
 
-**Expectations:** (1) **Offline / math layer** — only Python deps and `PYTHONPATH`; no blockchain RPC. (2) **Signet** — optional scripts under `binding/signet/`; require a Signet node, `btcaaron`, and `.env` as in `env.example`.
+**Dependency:** Taproot/Tapscript cases are built with **[btcaaron on PyPI](https://pypi.org/project/btcaaron/)** · **[source on GitHub](https://github.com/aaron-recompile/btcaaron)**. Install pinned versions from [`requirements.txt`](requirements.txt) (currently `btcaaron>=0.2.3`). The offline / math layer needs **only** these Python packages—no `bitcoind` RPC.
+
+**Expectations:** (1) **Offline / math layer** — Python deps above and `PYTHONPATH`; no blockchain RPC. (2) **Signet** — optional scripts under `binding/signet/`; require a Signet node, **[btcaaron](https://pypi.org/project/btcaaron/)**, and `.env` as in `env.example`.
 
 ## Layout
 
@@ -28,10 +30,10 @@ pip install -r requirements.txt
 cp env.example .env   # only needed for Signet scripts; see env.example
 ```
 
-Uses **`btcaaron` from PyPI** (and **`secp256k1`**) together with:
+Uses **[btcaaron](https://pypi.org/project/btcaaron/)** ([GitHub](https://github.com/aaron-recompile/btcaaron)) and **[secp256k1](https://pypi.org/project/secp256k1/)** together with:
 
-- **CSFS leaf** as `RawScript("cc")` (`OP_CHECKSIGFROMSTACK`). Equivalent to `inq_csfs_script()` where that helper exists in your `btcaaron` build.
-- **CHECKSIG harness** (`binding/vendor/taproot_checksig/tx_builder.py`) derives unsigned tx metadata via `to_bytes(False)` instead of `SpendBuilder.to_psbt()` (some `btcaaron` releases omit PSBT helpers).
+- **CSFS leaf** as `RawScript("cc")` (`OP_CHECKSIGFROMSTACK`). Equivalent to `inq_csfs_script()` where that helper exists in your [btcaaron](https://pypi.org/project/btcaaron/) build.
+- **CHECKSIG harness** (`binding/vendor/taproot_checksig/tx_builder.py`) derives unsigned tx metadata via `to_bytes(False)` instead of `SpendBuilder.to_psbt()` (some [btcaaron](https://pypi.org/project/btcaaron/) releases omit PSBT helpers).
 
 ## Offline run (no `bitcoind`)
 
@@ -51,10 +53,10 @@ python -m binding.replay_demo_ik_csfs
 
 ## Signet (optional)
 
-See **`binding/signet/README.md`**. Requires a **Bitcoin Inquisition** Signet `bitcoind` (or compatible) with RPC enabled, a **wallet name** matching `INQUISITION_RPC_WALLET` in `.env`, `btcaaron`, and the rest of **`env.example`**.
+See **`binding/signet/README.md`**. Requires a **Bitcoin Inquisition** Signet `bitcoind` (or compatible) with RPC enabled, a **wallet name** matching `INQUISITION_RPC_WALLET` in `.env`, **[btcaaron](https://pypi.org/project/btcaaron/)**, and the rest of **`env.example`**.
 
 ## License
 
 Code in this repository is released under the **MIT License** — see [`LICENSE`](LICENSE).
 
-Python dependencies (`btcaaron`, `secp256k1`, etc.) are subject to their respective licenses. Vendored code under `binding/vendor/` is included for reproducibility; see per-file comments where applicable.
+Python dependencies ([btcaaron](https://pypi.org/project/btcaaron/), [secp256k1](https://pypi.org/project/secp256k1/), etc.) are subject to their respective licenses. Vendored code under `binding/vendor/` is included for reproducibility; see per-file comments where applicable.
